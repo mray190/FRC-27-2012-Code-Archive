@@ -1,0 +1,48 @@
+Buzz17
+
+PWM01 L Drive
+PWM02 R Drive
+PWM03 Shift
+PWM04 Joe Johnson
+PWM05 Peg Leg
+PWM06 Shooter
+PWM07 Top Roller
+PWM08 Collector Roller
+PWM09 Turret
+PWm10 Hood
+
+DIO13/14 R Encoder
+DIO11/12 L Encoder
+DIO10 Shooter Encoder
+
+Hood Red/Blk Red/Blk Lt Side
+Hood Green/White Blk/Red Rt Side (Flip Motor)
+
+AI1 Yaw
+AI2 Pitch
+AI3 Turret
+AI4 Joe
+AI5 Hood
+
+Turret Wire Harness
+Red PWM = Hood Ana (Comp)
+Red PWM = Cam Pwr (unused, practice)
+Black = Shooter Enc (Comp) also camp pwr on practice
+White = Cam Pwr (Comp) Blk = gnd, White = 5v, Red = 6v (not connected to DSC)
+
+Turret Sensors:
+Red Port9 WireRed
+Blue Port8 WireBlack
+Purple Port7 WireGreen
+Yellow Port6 WireWhite
+
+Practice Multipin Cable Colors – Solid color is always Red Equiv when applicable
+Orange /OWhite -> Vex Fwd
+Grey -> SenRed
+GreyWhite -> SenBlue
+Green/GWhite -> Vex Rev
+BlueWhite -> Ana Sig
+Brown/BWhite -> Ana +v and Gnd
+Red -> SenPurple
+BlueRed -> SenYellow
+

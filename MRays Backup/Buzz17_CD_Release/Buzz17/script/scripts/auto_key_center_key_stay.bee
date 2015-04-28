@@ -1,0 +1,39 @@
+#Killer Bees
+DEBUG_VERBOSE
+
+#RESET ALL THE SENSORS!!!!!!
+#DRIVE_HDG_TARGET
+DRIVE_RESET_ENCODERS
+
+##############################################################
+# This section is where we fire the first two balls ##########
+##############################################################
+
+#Spin up the gun
+SIGSTARTGUN
+SET_FIRE_CUSTOM 2250 68 2280
+SET_FIRE_PRESET auton_custom
+
+#Drop the collector
+SET_JOE_JOHNSON bridge
+
+#Use the key shot in auto, but say it's auton_custom so we can not move the turret
+SET_FIRE_CUSTOM 2250 68 2280
+SET_FIRE_PRESET auton_custom
+
+#possibly Wait 5 so we don't hit our partners balls
+#WAIT 5000
+
+#Wait for the camera (without camera it's actually just gun speed)
+WAIT_FOR_CAMERA 5000
+
+#FIRE one
+#SIGFIRE_WHEN_READY
+
+#Fire two
+#WAIT 1000
+#WAIT_FOR_CAMERA 1000
+#SIGFIRE_WHEN_READY
+
+#Use the new command to fire both
+SIGFIRE_MULTIPLE

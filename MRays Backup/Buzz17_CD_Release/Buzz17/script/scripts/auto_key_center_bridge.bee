@@ -1,0 +1,89 @@
+#Killer Bees
+#DEBUG VERBOSE
+
+#Spin up the gun
+SIGSTARTGUN
+
+#Drop the collector
+SET_JOE_JOHNSON bridge
+
+#Wait for it to go down
+WAIT 200
+
+#turn the turret backwards
+SET_FIRE_PRESET align_center_backward
+
+#Wait for it to get backwards
+WAIT_FOR_DATA 5 1000
+
+#Go to auto aim mode with key shot
+SET_FIRE_PRESET auto_aim_key
+
+#WAIT 500 for settling
+WAIT 500
+
+#Wait for the camera
+WAIT_FOR_CAMERA 5000
+
+#FIRE one
+SIGFIRE_WHEN_READY
+
+#Fire two
+WAIT 1000
+WAIT_FOR_CAMERA 1000
+SIGFIRE_WHEN_READY
+
+#Wait 500ms for the ball to actually shoot
+WAIT 900
+
+#Set the turret sideways
+#SET_FIRE_PRESET preset_left_pocket
+
+#Drive to the bridge
+DRIVE_STRAIGHT 60 8
+
+#Start Sucking
+SUCK
+
+#Drop the Joe Johnson
+SET_JOE_JOHNSON down
+
+#Wait for the Joe Johnson to go down
+WAIT 400
+
+#Drive another two feet
+#Must reset encoders to use DRIVE_SIMPLE
+DRIVE_RESET_ENCODERS
+DRIVE_SIMPLE 42 8
+#Reset encoders when you get there
+DRIVE_RESET_ENCODERS
+
+#stop?
+DRIVE_STOP
+DRIVE_HOLD 500
+
+#Turn the turret backwards again
+#SET_FIRE_PRESET align_center_backwards
+
+#Drive back
+DRIVE_SIMPLE -94 5
+
+#Stop now
+DRIVE_STOP
+
+#Wait 500ms for settling
+WAIT_FOR_DATA 5 3000
+
+#Align key
+SET_FIRE_PRESET auto_aim_key
+
+#Wait for alignment
+WAIT_FOR_CAMERA 5000
+
+#FIRE two
+SIGFIRE_WHEN_READY
+WAIT 650
+WAIT_FOR_CAMERA 1000
+SIGFIRE_WHEN_READY
+
+#Done? Hurray!!!

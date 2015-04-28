@@ -1,0 +1,69 @@
+#Side Fender Autonomous
+#Team 33 - The Killer Bees
+#Debug in verbose mode for now
+#DEBUG_VERBOSE
+
+#Drop the Joe Johnson so we don't kill stuff
+SET_JOE_JOHNSON down
+
+#Spin the turret around to the backwards position
+SET_FIRE_PRESET align_center_backward
+
+#Spin up the gun
+SIGSTARTGUN
+
+#Backwards a distance in low gear
+DRIVE_STRAIGHT -105 4
+
+#Go to auto aim mode
+SET_FIRE_PRESET preset_center_field
+
+#Wait 2000ms to align and stuff
+WAIT 2000
+
+#Send a SIGFIRE
+SIGFIRE
+
+#Wait another 2000
+WAIT 2000
+
+#Send another SIGFIRE
+SIGFIRE
+
+#Wait 1000 for the ball to fire
+WAIT 1000
+
+#Turn the turret forward
+SET_FIRE_PRESET align_center
+
+#Drive backwards - the same distance for now
+DRIVE_STRAIGHT 105 4
+
+#Set the Joe Johnson to the ramp position
+SET_JOE_JOHNSON ramp
+
+#Get the balls
+SUCK
+
+DRIVE_STRAIGHT 8 4
+
+WAIT 600
+
+#Turn the turret backwards
+SET_FIRE_PRESET align_center_backward
+
+#Go back
+DRIVE_STRAIGHT -60 4
+
+#Turn on the camera
+SET_FIRE_PRESET preset_center
+
+#Drive back the rest of the way
+DRIVE_STRAIGHT -51 4
+
+#Shoot
+SIGFIRE
+
+WAIT 2000
+
+SIGFIRE

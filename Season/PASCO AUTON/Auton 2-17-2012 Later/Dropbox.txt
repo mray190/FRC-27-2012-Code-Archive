@@ -1,0 +1,1 @@
+You need to creat RAPOT for ramp actuator pot as a global variable connected to the pot voltage in michaels ramp actuaor vi in perodic tasks

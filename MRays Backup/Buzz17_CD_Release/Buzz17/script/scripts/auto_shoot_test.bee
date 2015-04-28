@@ -1,0 +1,28 @@
+#Test of shooting ability
+
+#Drop the Joe Johnson so we don't kill stuff
+#SET_JOE_JOHNSON down
+
+#Spin the turret around to the backwards position
+SET_FIRE_PRESET align_center_backward
+
+#Start the gun
+SIGSTARTGUN
+
+#Wait for it to spin around
+WAIT 2000
+
+#Go to auto aim mode
+SET_FIRE_PRESET preset_center_field
+
+#Wait for the camera
+WAIT_FOR_CAMERA 6000
+
+#Fire when ready
+SIGFIRE_WHEN_READY
+
+#Wait for shot to go
+WAIT 2500
+
+#Fire another
+SIGFIRE_WHEN_READY

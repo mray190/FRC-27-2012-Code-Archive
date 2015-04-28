@@ -1,0 +1,12 @@
+shots with current gun
+
+
+Key shot (*AWESOME*)
+-2200rpm
+-71degree shots
+-500ms spacing
+
+Center fender shot
+-1700rpm
+-95degree shots
+-1000ms spacing

@@ -1,0 +1,11 @@
+Joe Johnson
+high 0.59v
+high fault 0.35v
+low 3.91v
+low fault 4.3v
+
+hood
+high 3.33v
+low 5.0v
+high fault 3.0v
+low fault 5.5v

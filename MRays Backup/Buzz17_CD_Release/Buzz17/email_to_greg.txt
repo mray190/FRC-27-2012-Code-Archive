@@ -1,0 +1,15 @@
+Email to Greg - Send when I get back to Internet
+
+Greg,
+
+I've been seeing some insane CPU loads this season, and it's seriously messing with my ability to run control loops in any sort of repeatable time environment.
+
+The CPU load of my code, as optimized as I could make it (with many math-only and other simple VI's in Subroutine execution mode) with a total of 2 quad encoders (1x using counters), 1 semi-period encoder, 2 gyros, 3 analog potentiometers, 1 servo, 9 Victor PWM ports, and 5 DIO sensors, plus all of the math and supporting control loops used on average 96% of the processor, when running temporarily deployed with a few front panels open. All vision is done off-board and vision packets are sent via UDP, but the CPU load of the UDP listener is very small.
+
+I started looking at the LabVIEW help on the execution system, specifically how it (rather inefficiently for small VI's) manages VI execution. I started looking for places to remove excess VI calls, and found MotorControl Set Output. That VI contains 10 VI's underneath it, many of which do almost nothing. For example, MotorControlToPWM only takes a MotorControl ref and re-bundles it, and this happens several times before the FPGA Write VI. I went through and removed all of the unnecessary (to me) layering, and ended up with the my SimpleSetMotor VI (attached) which contains only the PWM scaling and FPGA Write VI, removing all of the stacked VI calls and continual re-typing of the DIO module and surrounding data (of which, only the DIO module name is actually used). I also deleted all of the "TransformRef", safety checks (which are disabled by default) and CAN handling in my copy.
+
+I also looked at the Analog Read Average VI and did similar, although much less optimization was possible. I moved all of the AI read code up one VI level to the AI read VI, and removed all of the type-changing.
+
+After making these changes, the CPU load on my processor went down to 64% with similar front panels open.
+
+Andrew

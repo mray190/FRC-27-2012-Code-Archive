@@ -1,0 +1,65 @@
+
+Joe Johnson
+low limit 4.19
+high limit 1.24v
+fault low 4.4v
+fault high 0.8v
+fault move 0.03
+fault move time 200ms
+units are pct (0-1) - 0 is down 1 is up
+
+down 0
+run up 0.76
+up 1
+ramp 0.5
+bridge lift 0.63
+
+Hood
+high limit 2.42v
+high limit 67deg
+low limit 4.6v
+cal 3.64v
+cal 82deg
+
+New cal:
+high lim 1.60v
+high lim 67deg
+low limit 3.855v
+cal 81deg
+cal 2.74v
+
+Turret
+center 2.14v
+low limit 0.41v
+high limit 3.02v
+180 1.01v
+
+Gun Cals
+center shot
+hood 75.2
+gun 50.9
+
+swoosh center shot
+gun 47
+hood 74.5
+turret auto
+
+backboard shot
+gun 52
+hood 75
+
+backboard shot 1/2 way to edge of fender
+gun 52
+hood 73.5
+
+backboard shot at edge of fender
+gun 52
+hood 72
+
+far key shot
+gun 53
+hood 69.5
+
+center shot
+gun 53
+hood 75

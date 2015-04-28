@@ -1,0 +1,106 @@
+#Killer Bees
+DEBUG_VERBOSE
+
+#RESET ALL THE SENSORS!!!!!!
+#DRIVE_HDG_TARGET
+DRIVE_RESET_ENCODERS
+
+##############################################################
+# This section is where we fire the first two balls ##########
+##############################################################
+
+#Spin up the gun
+SIGSTARTGUN
+SET_FIRE_CUSTOM 2250 68 2280
+SET_FIRE_PRESET auton_custom
+
+#Drop the collector
+SET_JOE_JOHNSON bridge
+
+#Use the key shot in auto, but say it's auton_custom so we can not move the turret
+SET_FIRE_CUSTOM 2250 68 2280
+SET_FIRE_PRESET auton_custom
+
+#Wait for the camera (without camera it's actually just gun speed)
+WAIT_FOR_CAMERA 5000
+
+#FIRE one
+SIGFIRE_MULTIPLE
+
+#Wait 900ms for the ball to actually shoot
+WAIT 900
+
+###############################################################
+###This section is where we drive to the bridge ###############
+###############################################################
+
+#Start sucking
+SUCK
+
+#Set the turret sideways
+#SET_FIRE_PRESET preset_left_pocket
+#SET_FIRE_PRESET auto_aim_key
+
+#Drive to the bridge
+DRIVE_RESET_ENCODERS
+DRIVE_STRAIGHT 47 9
+
+#Stop on the bridge
+DRIVE_STOP
+
+#Drop the Joe Johnson
+SET_JOE_JOHNSON down
+
+#Wait for the Joe Johnson to go down
+WAIT 300
+
+################################################################
+## This section is where we get the balls off of the bridge ####
+## This is kinda faked since Bryan wants to try something diff #
+################################################################
+
+#Drive slightly up the bridge
+DRIVE_RESET_ENCODERS
+DRIVE_SIMPLE 6 5
+
+DRIVE_RESET_ENCODERS
+
+#Drive back
+#Intentionally set the error off to make the turret controller happy
+DRIVE_HDG_TARGET 8
+DRIVE_STRAIGHT -49 5 0
+
+#Aim at this point?
+SET_FIRE_PRESET auto_aim_key
+
+#Stop now
+DRIVE_STOP
+
+#####################################################################
+### This section is where we fire the second set of balls ###########
+#####################################################################
+
+#Wait for the camera to lock on
+WAIT_FOR_CAMERA 1000
+
+#FIRE two
+SIGFIRE_WHEN_READY
+WAIT 650
+SIGFIRE
+WAIT 650
+SIGFIRE_WHEN_READY
+WAIT 650
+SIGFIRE_WHEN_READY
+WAIT 650
+SIGFIRE_WHEN_READY
+WAIT 650
+SIGFIRE_WHEN_READY
+WAIT 650
+SIGFIRE_WHEN_READY
+WAIT 650
+SIGFIRE_WHEN_READY
+WAIT 650
+SIGFIRE_WHEN_READY
+WAIT 650
+
+#Done? Hurray!!!

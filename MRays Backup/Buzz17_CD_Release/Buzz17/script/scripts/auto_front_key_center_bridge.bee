@@ -1,0 +1,117 @@
+#Killer Bees
+DEBUG_VERBOSE
+
+#RESET ALL THE SENSORS!!!!!!
+#DRIVE_HDG_TARGET
+DRIVE_RESET_ENCODERS
+
+##############################################################
+# This section is where we fire the first two balls ##########
+##############################################################
+
+#Spin up the gun
+SIGSTARTGUN
+SET_FIRE_CUSTOM 2200 69.5
+SET_FIRE_PRESET auton_custom
+
+#Drop the collector
+SET_JOE_JOHNSON bridge
+
+#Use the key shot in auto, but say it's auton_custom so we can not move the turret
+SET_FIRE_CUSTOM 2200 69.5
+SET_FIRE_PRESET auton_custom
+
+#Wait for the camera (without camera it's actually just gun speed)
+WAIT_FOR_CAMERA 5000
+
+#FIRE one
+#SIGFIRE_WHEN_READY
+
+#Fire two
+#WAIT 1000
+#WAIT_FOR_CAMERA 1000
+#SIGFIRE_WHEN_READY
+
+#Use the new command to fire both
+SIGFIRE_MULTIPLE
+
+#Wait 900ms for the ball to actually shoot
+WAIT 900
+
+###############################################################
+###This section is where we drive to the bridge ###############
+###############################################################
+
+#Start sucking
+SUCK
+
+#Set the turret sideways
+#SET_FIRE_PRESET preset_left_pocket
+SET_FIRE_PRESET auto_aim_key
+
+#Drive to the bridge
+DRIVE_RESET_ENCODERS
+#Drive an additional 4 feet
+DRIVE_STRAIGHT 95 9
+
+#Stop on the bridge
+DRIVE_STOP
+
+#Drop the Joe Johnson
+SET_JOE_JOHNSON down
+
+#Wait for the Joe Johnson to go down
+WAIT 400
+
+################################################################
+## This section is where we get the balls off of the bridge ####
+################################################################
+
+#Drive another two feet
+#Must reset encoders to use DRIVE_SIMPLE
+DRIVE_RESET_ENCODERS
+DRIVE_SIMPLE 42 5.5
+#Reset encoders when you get there
+DRIVE_RESET_ENCODERS
+
+#stop?
+#DRIVE_STOP
+#DRIVE_HOLD 500
+#instead of actually stopping just give it a fixed power for a fixed time
+DRIVE_POWER 800 1.7
+
+#Drive back
+#Intentionally set the error off to make the turret controller happy
+#DRIVE_HDG_TARGET -5
+DRIVE_STRAIGHT -100 5 0
+
+#Stop now
+DRIVE_STOP
+
+#####################################################################
+### This section is where we fire the second set of balls ###########
+#####################################################################
+
+#Wait for the camera to lock on
+WAIT_FOR_CAMERA 1000
+
+#FIRE two
+SIGFIRE_WHEN_READY
+WAIT 650
+SIGFIRE
+WAIT 650
+SIGFIRE
+WAIT 650
+SIGFIRE
+WAIT 650
+SIGFIRE
+WAIT 650
+SIGFIRE
+WAIT 650
+SIGFIRE
+WAIT 650
+SIGFIRE
+WAIT 650
+SIGFIRE
+
+#Done? Hurray!!!

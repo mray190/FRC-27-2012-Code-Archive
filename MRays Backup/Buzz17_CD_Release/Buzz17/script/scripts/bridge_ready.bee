@@ -1,0 +1,13 @@
+#Bridge Reset Script
+DEBUG_VERBOSE
+
+#Set the turret to the fold position preset
+SET_FIRE_PRESET align_fold
+
+#Wait to align timeout in 2000
+WAIT_FOR_CAMERA 2000
+
+#Fold up the Joe Johnson
+SET_JOE_JOHNSON fold
+
+#All Done!

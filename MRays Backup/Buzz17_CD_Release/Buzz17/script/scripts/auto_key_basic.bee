@@ -1,0 +1,38 @@
+#Side Fender Autonomous
+#Team 33 - The Killer Bees
+#Debug in verbose mode for now
+DEBUG_VERBOSE
+
+#Drop the Joe Johnson so we don't kill stuff
+SET_JOE_JOHNSON down
+
+#Define and use a custom auton preset
+#SET_FIRE_CUSTOM <speed> <hood>
+SET_FIRE_CUSTOM 2000 71
+SET_FIRE_PRESET auton_custom
+
+SIGSTARTGUN
+
+#Wait for the Joe Johnson to move and for the speed controller to stabilize
+WAIT 1000
+
+#Wait for signal of ready - In the auton_custom mode, the signal indicates speed good only (no cam alignment)
+WAIT_FOR_CAMERA
+
+#Send a SIGFIRE
+SIGFIRE
+
+#Wait another 2000
+WAIT 500
+
+#Send another SIGFIRE
+SIGFIRE
+
+WAIT 500
+SIGFIRE
+WAIT 500
+SIGFIRE
+
+#Wait a bit and stop the gun
+WAIT 1000
+SIGSTOPGUN

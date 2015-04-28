@@ -1,0 +1,120 @@
+#Killer Bees
+DEBUG_VERBOSE
+
+#RESET ALL THE SENSORS!!!!!!
+#DRIVE_HDG_TARGET
+DRIVE_RESET_ENCODERS
+
+###############################################################
+###This section is where we drive to the bridge ###############
+###############################################################
+
+#Start sucking and start the gun
+SUCK
+SIGSTARTGUN
+
+#Set the turret sideways
+#SET_FIRE_PRESET preset_left_pocket
+SET_FIRE_CUSTOM 2250 68 2280
+#SET_FIRE_PRESET auto_aim_key
+
+#Prepare the Joe Johnson for dropping the bridge
+
+
+SET_JOE_JOHNSON bridge
+
+#Drive to the bridge
+DRIVE_RESET_ENCODERS
+DRIVE_STRAIGHT 50 15
+
+SET_JOE_JOHNSON down
+
+#Stop on the bridge
+DRIVE_STOP
+
+#Drop the Joe Johnson
+SET_JOE_JOHNSON down
+
+#Wait for the Joe Johnson to come down
+WAIT 650
+
+#Drive a little up on the bridge
+#DRIVE_RESET_ENCODERS
+#DRIVE_SIMPLE 2 15
+#DRIVE_STOP
+
+################################################################
+## This section is where we get back to the key ################
+################################################################
+
+#This is copypasta from the other routine where we hit the bridge last, we just moved the sections around
+#Drive another two feet
+#Must reset encoders to use DRIVE_SIMPLE
+#DRIVE_RESET_ENCODERS
+#DRIVE_SIMPLE 42 5.5
+#Reset encoders when you get there
+DRIVE_RESET_ENCODERS
+
+#stop?
+#DRIVE_STOP
+#DRIVE_HOLD 500
+#instead of actually stopping just give it a fixed power for a fixed time
+#DRIVE_POWER 800 1.7
+
+#Drive back
+#Intentionally set the error off to make the turret controller happy
+#DRIVE_HDG_TARGET -5
+DRIVE_STRAIGHT -60 5 0
+
+#Stop now
+DRIVE_STOP
+
+##############################################################
+# This section is where we fire the first two balls ##########
+##############################################################
+
+#Spin up the gun
+SIGSTARTGUN
+SET_FIRE_CUSTOM 2250 68 2280
+#SET_FIRE_PRESET auton_custom
+SET_FIRE_PRESET auto_aim_key
+
+#Drop the collector
+#SET_JOE_JOHNSON bridge
+
+#Use the key shot in auto, but say it's auton_custom so we can not move the turret
+#SET_FIRE_CUSTOM 2250 68 2280
+#SET_FIRE_PRESET auton_custom
+
+#Wait for the camera (without camera it's actually just gun speed)
+WAIT_FOR_CAMERA 2000
+
+#FIRE one
+#SIGFIRE_WHEN_READY
+
+#Fire two
+#WAIT 1000
+#WAIT_FOR_CAMERA 1000
+#SIGFIRE_WHEN_READY
+
+#Use the new command to fire both
+SIGFIRE_MULTIPLE
+
+#Done? Hurray!!!
+#Nope, gotta fire the rest again
+WAIT 1200
+SIGFIRE
+WAIT 1200
+SIGFIRE
+WAIT 1000
+SIGFIRE
+WAIT 1000
+SIGFIRE
+WAIT 1000
+SIGFIRE
+WAIT 1000
+SIGFIRE
+WAIT 1000
+SIGFIRE
+WAIT 1000
+SIGFIRE

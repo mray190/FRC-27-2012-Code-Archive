@@ -1,0 +1,35 @@
+#Killer Bees
+#DEBUG VERBOSE
+
+#Drop the collector
+SET_JOE_JOHNSON ramp_stay
+
+#Drive to the bridge
+DRIVE_STRAIGHT 60 8
+
+#Start Sucking
+SUCK
+
+#Drop the Joe Johnson
+SET_JOE_JOHNSON down
+
+#Wait for the Joe Johnson to go down
+WAIT 250
+
+#Drive another two feet
+#Must reset encoders to use DRIVE_SIMPLE
+DRIVE_RESET_ENCODERS
+DRIVE_SIMPLE 38 8
+#Reset encoders when you get there
+DRIVE_RESET_ENCODERS
+
+#stop?
+DRIVE_STOP
+
+WAIT 1250
+
+#Drive back
+DRIVE_SIMPLE -90 5
+
+#Stop now
+DRIVE_STOP

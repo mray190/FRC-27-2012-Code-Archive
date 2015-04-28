@@ -1,0 +1,130 @@
+#Killer Bees
+#Auto Side Bridge
+
+#Setup:
+#Robot is setup in a straight path to the side bridge
+#Hit the side bridge and drop it down
+#Backup, then go forward a little to collect the balls
+
+######################################################
+### This is the section that initializes stuff #######
+######################################################
+
+#Debug mode?
+DEBUG_VERBOSE
+
+######################################################
+### This is the section that shoots the first 2 ######
+######################################################
+
+#Spin up the gun
+SIGSTARTGUN
+
+#Use the key shot in auto, but say it's auton_custom so we can not move the turret
+SET_FIRE_CUSTOM 2200 69.5
+SET_FIRE_PRESET auton_custom
+
+#Wait for the camera (without camera it's actually just gun speed)
+WAIT_FOR_CAMERA 5000
+
+#Use the new command to fire both
+SIGFIRE_MULTIPLE
+
+#Wait 900ms for the ball to actually shoot
+WAIT 900
+
+#Set the shooter to the new speed it needs later
+SET_FIRE_CUSTOM 2200 69.5
+SET_FIRE_PRESET auton_custom
+
+#Set Joe Johnson to the bridge position
+SET_JOE_JOHNSON bridge
+
+#Turn the turret into auto aim mode
+SET_FIRE_PRESET auto_aim_key
+
+######################################################
+### This is the section that drives to the bridge ####
+######################################################
+
+#Drive Forward
+DRIVE_RESET_ENCODERS
+DRIVE_STRAIGHT 101 15
+DRIVE_STOP
+
+#Drop the bridge
+SET_JOE_JOHNSON down
+
+#Start sucking now
+SUCK
+
+#Wait for the collector to go down
+WAIT 600
+
+#Drive a little bit
+DRIVE_RESET_ENCODERS
+DRIVE_SIMPLE 3 14
+
+#Pickup the collector
+SET_JOE_JOHNSON bridge
+
+#Backup a little and stop
+#DRIVE_RESET_ENCODERS
+#DRIVE_SIMPLE -3 8
+#DRIVE_STOP
+
+#Pickup the collector
+#SET_JOE_JOHNSON bridge
+
+#Wait for balls to come
+WAIT 1000
+
+#Put the joe johnson down again
+SET_JOE_JOHNSON down
+
+#Drive forward a little
+DRIVE_RESET_ENCODERS
+#DRIVE_SIMPLE 1.5 8
+
+#And go forward again
+#DRIVE_RESET_ENCODERS
+#DRIVE_SIMPLE 22 14
+#DRIVE_STOP
+#DRIVE_RESET_ENCODERS
+
+#Wait for the balls to come in
+WAIT 1000
+
+######################################################
+### This is the section that drives back #############
+######################################################
+
+#Begin aligning
+#DRIVE_HDG_TARGET -10
+SET_FIRE_CUSTOM 2200 69.5
+SET_FIRE_PRESET auto_aim_key
+
+#Go back to the key
+DRIVE_STRAIGHT -111 16
+DRIVE_STOP
+
+WAIT 1000
+
+SIGFIRE
+WAIT 650
+SIGFIRE
+WAIT 650
+SIGFIRE
+WAIT 650
+SIGFIRE
+WAIT 650
+SIGFIRE
+WAIT 650
+SIGFIRE
+WAIT 650
+SIGFIRE
+WAIT 650
+SIGFIRE
+WAIT 650
+SIGFIRE
+
